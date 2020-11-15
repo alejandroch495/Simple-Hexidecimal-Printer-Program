@@ -1,0 +1,280 @@
+<style>
+    /* body styling */
+    
+    body {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(70, 70, 70);
+        justify-content: center;
+        align-content: center;
+    }
+    /* hides default checkbox behind stylized checkbox */
+    
+    .checkbox {
+        opacity: 0;
+        position: absolute;
+    }
+    /* makes sure the transition of the background from dark gray and white is 200ms */
+    
+    .checkbox:checked+.label {
+        transition: 200ms linear;
+        background: #fff;
+    }
+    /* makes sure the ball moves smoothly and changes color when clicked */
+    
+    .checkbox:checked+.label .ball {
+        transition: 200ms linear;
+        transform: translateX(28px);
+        background: rgb(128, 255, 0)
+    }
+    /* moves ball back and changes color to default one stated */
+    
+    .checkbox+.label .ball {
+        transition: 200ms linear;
+        transform: translateX(0px);
+    }
+    /* set parameters for the text in the option bar above the program */
+    
+    .options {
+        font-family: 'Roboto', cursive;
+        font-size: 1.5em;
+        float: left;
+        width: 70%;
+    }
+    /* sets the size and applies the same styling as the program */
+    
+    .optioncontainer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: center;
+        margin-bottom: 40px;
+        border: 3px solid rgb(56, 56, 56);
+        border-radius: 15px;
+        width: 45%;
+        height: 50px;
+        font-size: 2vmin;
+        box-shadow: 5px 5px 20px rgb(21, 21, 21), -5px 5px 20px rgb(21, 21, 21);
+        font-family: 'Roboto', cursive;
+        background: rgb(69, 69, 69);
+        padding: 15px;
+    }
+    /* styling for the checkbox */
+    
+    .label {
+        transform: scale(150%);
+        position: absolute;
+        background-color: #111;
+        justify-content: space-between;
+        align-items: center;
+        float: left;
+        display: flex;
+        padding: 3px;
+        width: 52px;
+        height: 24px;
+        border-radius: 50px;
+        margin: 15px;
+        color: gray;
+        justify-self: center;
+        align-self: end;
+        user-select: none;
+    }
+    /* this makes sure the text inside the label is aligned properly  */
+    
+    .label>p {
+        width: 42%;
+        font-size: 80%;
+        margin: 0;
+    }
+    /* this turns the div into a circle and places it inside the label correctly */
+    
+    .ball {
+        position: absolute;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        background-color: gray;
+    }
+    
+    #container {
+        /* Sets flow layout of items inside of the container to flow in a column direction and aligns text and items in container to the center of the entier veiwport and inside of the container */
+        display: flex;
+        grid-column: 1 / 4;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: space-around;
+        place-self: center;
+        /* makes a box outline for the container and sets a specific size for text to be legible at different window sizes */
+        border: 3px solid rgb(56, 56, 56);
+        border-radius: 15px;
+        width: 35%;
+        height: 50%;
+        font-size: 2vmin;
+        box-shadow: 5px 5px 20px rgb(21, 21, 21), -5px 5px 20px rgb(21, 21, 21);
+        font-family: 'Roboto', cursive;
+        padding: 5%;
+        background: rgb(69, 69, 69);
+        text-shadow: 1.5px 2px 0px rgba(10, 10, 10, 0.4);
+    }
+    /* changes title font of program  */
+    
+    #title {
+        font-family: 'Press Start 2P', cursive;
+        text-shadow: 5px 5px 0px rgba(1, 1, 1, .5);
+    }
+    /* stylization to the output of the program  */
+    
+    #output {
+        margin: 5px;
+        padding: 5px;
+        font-size: 4vmin;
+    }
+    /* stylizes the input box */
+    
+    #input {
+        width: 50%;
+        height: 5vmin;
+        font-size: 2vmin;
+        text-align: center;
+        border: 3px solid rgb(56, 56, 56);
+        border-radius: 20vmin;
+        box-shadow: 5px 5px 20px rgb(21, 21, 21), -5px 5px 20px rgb(21, 21, 21);
+    }
+    /* styling for printer style text */
+    
+    #green {
+        color: greenyellow;
+    }
+    /* styling for printer style text */
+    
+    #gray {
+        color: gray;
+    }
+</style>
+
+<head>
+
+    <!-- these call fonts from fonts.google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
+
+</head>
+
+
+
+<body>
+    <!-- this div contains the checkbox and the text of what it does -->
+    <div class="optionContainer">
+        <!-- this is the option text -->
+        <h4 class="options">printer style:<br> <span id="green">on:simple</span> | <span id="gray">off:full</span></h4>
+        <!-- identifiers for java and CSS. along with a functioncalling on change of checkbox -->
+        <input type="checkbox" class="checkbox" id="checkbox" onchange="printerStyle()">
+        <label for="checkbox" class="label"> 
+            <!-- function must be placed here due to unknown issue found that would leave function as 'undefined' -->
+            <script>var toggled = false;
+                var style = 0;
+            /* toggler */
+                function printerStyle() {
+                    if (!toggled) {
+                        toggled = true;
+                        style = 1;
+                        return;
+                    }
+                    if (toggled) {
+                        toggled = false;
+                        style = 0;
+                        return;
+                    }
+                }</script>
+
+                <!-- text is placed inside of label for clarity -->
+            <p>on</p>
+            <p>off</p>
+            <div class="ball"></div>
+        </label>
+    </div>
+    <!-- program container -->
+    <div id="container">
+        <!-- program title -->
+        <h1 id="title">Hex Printer Program</h1>
+        <!-- user is prompted -->
+        <div>Please input a number from&nbsp1&nbsp-&nbsp16
+            <!-- output is displayed here -->
+            <p id="output">
+                <p>
+        </div>
+        <!-- user can place their input here for program to run -->
+        <input placeholder="Input" id="input" type=text onkeypress="keyCode(event)">
+    </div>
+</body>
+
+
+
+<script>
+    /* this event is called on keypressed */
+    function keyCode(event) {
+
+        /* key value of key pressed is stored */
+        var keyPressed = event.keyCode;
+        /* hex values here */
+        var count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+        /* this acts as a boolean the way I use it here */
+        var enterButton = 13;
+        var i = 0;
+
+        /* stores text entered into text box into the input */
+        const input = document.getElementById('input');
+        /* stores the element with the id "output" */
+        const output = document.getElementById('output');
+
+
+
+
+
+        /* checks to make sure that on Enter, the value used in input is between 1-16 */
+        if (keyPressed == enterButton && input.value > 0 && input.value < 17 && style == 0) {
+            let messages = [];
+            /* display in cosole for debugging  */
+            console.log('messages :' + messages);
+
+            /* this will print out every value stored within count based on the i count and space it out with ', ' */
+            for (i = 0; i <= input.value - 1; i++) {
+                /* display in cosole for debugging  */
+                console.log('messages count :' + messages);
+                output.innerText = messages.push(count[i]);
+                output.innerText = messages.join(', ');
+
+
+            }
+
+
+        }
+        if (keyPressed == enterButton && input.value > 0 && input.value < 17 && style == 1) {
+            output.innerText = "Hexidecimal value of " + input.value + " is " + count[input.value - 1];
+            i = input.value;
+        }
+        /* user will get this as an error message when they input anything below a 1, over a 16 AND if they do not put anything at all */
+        if (keyPressed == enterButton && input.value < 1 || input.value > 16 && input.value != null) {
+            var errorM = 'Input number must be between <b>1 - 16<b>';
+            output.innerHTML = errorM;
+            /* display error in cosole for debugging */
+            console.log('error :' + errorM);
+
+        }
+        /* this function clears the input element so the user can quickly input a new number to turn into a hex value */
+        if (i == input.value) {
+            i = 0;
+            input.value = null
+        }
+
+
+
+
+    }
+</script>
