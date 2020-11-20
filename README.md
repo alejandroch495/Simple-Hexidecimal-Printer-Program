@@ -1,4 +1,4 @@
 # Simple-Hexidecimal-Printer-Program
 link located here:
       https://alejandroch495.github.io/Simple-Hexidecimal-Printer-Program/
-![Screenshot](image.png s=20)
+![smiley](image.png){:height="36px" width="36px"}
