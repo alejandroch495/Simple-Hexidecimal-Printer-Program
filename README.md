@@ -3,7 +3,7 @@ link located here:
       https://alejandroch495.github.io/Simple-Hexidecimal-Printer-Program/<br><br><br><br>
       
       Desktop Application:
-<img src="https://raw.githubusercontent.com/alejandroch495/Simple-Hexidecimal-Printer-Program/master/image.png" width="400"  />
+<img src="https://raw.githubusercontent.com/alejandroch495/Simple-Hexidecimal-Printer-Program/master/image.png" width="400" position="center" />
 <br>
 
       Mobile Application:
